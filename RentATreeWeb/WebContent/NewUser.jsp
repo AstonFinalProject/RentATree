@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Sign up</title>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js /bootstrap.bundle.min.js" integrity="sha384 -gtEjrD/ SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+	<link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity ="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin ="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="text-center">
+<main class="form-signin">
+	<form>
+		<!--<img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
+		<img class="mb-4" src="static/rentATreeLogo.PNG" alt="" width="75" height="62">
+		<h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+		<div id=FormFill>
+		<p>Please fill in this form to create an account</p>
+		</div>
+	
+	<div class="form-floating">
+		<input type="username" class="form-control" id="floatingInput">
+		<label for="floatingInput">Username</label>
+	</div>
+	
+	<div class="form-floating">
+		<input type="email" class="form-control" id="floatingInput">
+		<label for="floatingInput">Email address</label>
+	</div>
+	
+	<div class="form-floating">
+		<input type="FirstName" class="form-control" id="floatingInput">
+		<label for="floatingInput">First Name</label>
+	</div>
+	
+	<div class="form-floating">
+		<input type="SecondName" class="form-control" id="floatingInput">
+		<label for="floatingInput">Second Name</label>
+	</div>
+	
+	<div class="form-floating">
+		<input type="Address" class="form-control" id="floatingInput">
+		<label for="floatingInput">Address</label>
+	</div>
+	
+	<div class="form-floating">
+		<input type="Telephone" class="form-control" id="floatingInput" placeholder="Telephone">
+		<label for="floatingInput">Telephone</label>
+	</div>
+	
+	<div class="form-floating">
+		<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+		<label for="floatingPassword">Password</label>
+	</div>
+	
+	<div class="form-floating">
+		<input type="ConfirmPassword" class="form-control" id="floatingPassword" placeholder="ConfirmPassword">
+		<label for="floatingPassword">Confirm Password</label>
+	</div>
+	
+	<div class="checkbox1 mb-3">
+		<label>
+		<input type="checkbox" value="Terms"> I accept the Terms of Use and Privacy Policy
+		</label>
+	</div>
+
+	<p><a href="url">Sign In</a></p> <!-- need to change url-->
+	
+	<button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+	<p class="mt-5 mb-3 text-muted">&copy; RentATree 2021</p>
+	
+	
+  </form>
+
+</main>
+</body>
+
+</html>
