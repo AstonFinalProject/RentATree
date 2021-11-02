@@ -52,9 +52,6 @@
 			response.sendRedirect("http://localhost:18080/RentATreeWeb/Home.jsp");
 		}
 	%>
-	<%=output%>
-	<%=request.getParameter("username")%>
-	<%=request.getParameter("password")%>
 </main>
 </body>
 
