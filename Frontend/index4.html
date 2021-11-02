@@ -36,10 +36,25 @@
       </div>
     </div>
   </nav>
+  
+  
+  
 </header>
+	
 	
 
 	<div class = "container">
+
+	
+	<div align="center">
+		
+		<div align=top>
+	<marquee behavior="alternate" bgcolor="#bb3434" direction="left" height:="" loop="7" scrollamount="1" scrolldelay="2" width="100%">
+		<span style="font-size: 20px;color:#FFFFFF">
+			Discount Buy one Get the other half price!</span></marquee>
+		</div>
+	</div>
+	
 		<div class="form-check">
 			<p>Please select your tree type</p>
 			<input type="checkbox" class="form-check-input" id="type">
@@ -69,9 +84,16 @@
 		</div>
 		
 		<div class="slidecontainer">
-			<p><br>Please select the height of the tree (in cm)</br></p>
-			<input type="range" min="50" max="400" value="200" class="slider" id="myRange">
+			<p><br>Please select the max height of the tree (in cm)</br></p>
+			<input type="range" min="0" max="400" value="200" class="slider" id="myRange">
 			<p>Value: <span id="demo"></span></p>
+		</div>
+		
+		<!-- second slider-->
+		<div class="slidecontainer">
+			<p><br>Please select the min height of the tree (in cm)</br></p>
+			<input type="range" min="0" max="400" value="200" class="slider1" id="myRange1">
+			<p>Value: <span id="demo1"></span></p>
 		</div>
 		
 		<script>
@@ -81,6 +103,17 @@
 
 			slider.oninput = function() {
 			output.innerHTML = this.value;
+}
+</script>
+
+		<!-- second slider script-->
+		<script>
+			var slider1 = document.getElementById("myRange1");
+			var output1 = document.getElementById("demo1");
+			output1.innerHTML = slider1.value;
+
+			slider1.oninput = function() {
+			output1.innerHTML = this.value;
 }
 </script>
 		
