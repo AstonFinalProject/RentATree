@@ -1,8 +1,14 @@
 package controller;
-import db.*;
+import db.ProductDBHandler;
+import models.Product;
+import java.util.*;
 
-public class main {
-	public static void main(String args[]) {
-		Login l = new Login("Test", "Test");
+public class Main {
+	public static void main(String[] args) {
+		ProductDBHandler h = new ProductDBHandler();
+		ArrayList<Product> p = h.getProducts();
+		for(Product tree: p) {
+			System.out.println(tree);
+		}
 	}
 }

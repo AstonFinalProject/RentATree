@@ -35,7 +35,7 @@
 		</label>
 	</div>
     
-	<p><a href="url">Sign Up</a></p> <!-- need to change url-->
+	<p><a href="NewUser.jsp">Sign Up</a></p> <!-- need to change url-->
 	
 	<button class="w-100 btn btn-lg btn-primary" type="submit" value="Submit">Sign in</button>
 	<p class="mt-5 mb-3 text-muted">&copy; RentATree 2021</p>
@@ -52,9 +52,6 @@
 			response.sendRedirect("http://localhost:18080/RentATreeWeb/Home.jsp");
 		}
 	%>
-	<%=output%>
-	<%=request.getParameter("username")%>
-	<%=request.getParameter("password")%>
 </main>
 </body>
 

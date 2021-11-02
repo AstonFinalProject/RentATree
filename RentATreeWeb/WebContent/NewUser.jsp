@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@page import = "db.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +13,7 @@
 
 <body class="text-center">
 <main class="form-signin">
-	<form>
+	<form action="NewUser.jsp" method="POST">
 		<!--<img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
 		<img class="mb-4" src="static/rentATreeLogo.PNG" alt="" width="75" height="62">
 		<h1 class="h3 mb-3 fw-normal">Sign Up</h1>
@@ -22,57 +22,71 @@
 		</div>
 	
 	<div class="form-floating">
-		<input type="username" class="form-control" id="floatingInput">
+		<input class="form-control" id="floatingInput" name="username">
 		<label for="floatingInput">Username</label>
 	</div>
 	
 	<div class="form-floating">
-		<input type="email" class="form-control" id="floatingInput">
+		<input type="email" class="form-control" id="floatingInput" name="email">
 		<label for="floatingInput">Email address</label>
 	</div>
 	
 	<div class="form-floating">
-		<input type="FirstName" class="form-control" id="floatingInput">
+		<input class="form-control" id="floatingInput" name="fname">
 		<label for="floatingInput">First Name</label>
 	</div>
 	
 	<div class="form-floating">
-		<input type="SecondName" class="form-control" id="floatingInput">
-		<label for="floatingInput">Second Name</label>
+		<input  class="form-control" id="floatingInput" name="lname">
+		<label for="floatingInput">Last Name</label>
 	</div>
 	
 	<div class="form-floating">
-		<input type="Address" class="form-control" id="floatingInput">
-		<label for="floatingInput">Address</label>
-	</div>
-	
-	<div class="form-floating">
-		<input type="Telephone" class="form-control" id="floatingInput" placeholder="Telephone">
+		<input class="form-control" id="floatingInput" placeholder="Telephone" name="phone">
 		<label for="floatingInput">Telephone</label>
 	</div>
 	
 	<div class="form-floating">
-		<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+		<input type="password" class="form-control" id="floatingPassword" name="pass">
 		<label for="floatingPassword">Password</label>
 	</div>
 	
 	<div class="form-floating">
-		<input type="ConfirmPassword" class="form-control" id="floatingPassword" placeholder="ConfirmPassword">
+		<input type="password" class="form-control" id="floatingPassword" name="cpass">
 		<label for="floatingPassword">Confirm Password</label>
 	</div>
 	
 	<div class="checkbox1 mb-3">
 		<label>
-		<input type="checkbox" value="Terms"> I accept the Terms of Use and Privacy Policy
+		<input type="checkbox" value="Terms" name="terms"> I accept the Terms of Use and Privacy Policy
 		</label>
 	</div>
 
-	<p><a href="url">Sign In</a></p> <!-- need to change url-->
+	<p><a href="Login.jsp">Sign In</a></p> <!-- need to change url-->
 	
-	<button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+	<button class="w-100 btn btn-lg btn-primary" value="submit" type="submit">Sign Up</button>
 	<p class="mt-5 mb-3 text-muted">&copy; RentATree 2021</p>
 	
+	<%
+		String username = request.getParameter("username");
+		String pass = request.getParameter("pass");
+		String cpass = request.getParameter("cpass");
+		String phone = request.getParameter("phone");
+		String fname = request.getParameter("fname");
+		String lname = request.getParameter("lname");
+		String email = request.getParameter("email");
+		String terms = request.getParameter("terms");
+		String submit = request.getParameter("Submit");
 	
+		if(pass!=null && pass.equals(cpass)){
+			String[] params = {username, email, fname, lname,phone, pass};
+			NewUser nu = new NewUser(params);
+			int output = nu.createUser();
+			if(output>=1){
+				response.sendRedirect("http://localhost:18080/RentATreeWeb/Login.jsp");
+			}
+		}
+	%>
   </form>
 
 </main>
