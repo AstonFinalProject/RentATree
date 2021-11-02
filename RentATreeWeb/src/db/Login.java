@@ -21,7 +21,6 @@ public class Login {
 			params.add(username);
 			params.add(password);
 			System.out.println(username);
-			System.out.println(username);
 			output = db.execSP(params, loginSQL);
 			System.out.println(output);
 		}catch(Exception e) {
