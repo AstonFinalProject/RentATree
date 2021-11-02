@@ -18,6 +18,7 @@ class LoginTest {
 		DBConnect db;
 		db = new DBConnect();
 		db.connect();
+		//String newuserstr = "IF EXISTS (select 0 from userdetailsmaster where username='Harison') BEGIN CALL createNewUser('Harison','harison@Test.com', 'Harison', 'Wright', '07657865456', 'Pa$$word123', @var) END";
 		String newuserstr = "CALL createNewUser('Harison','harison@Test.com', 'Harison', 'Wright', '07657865456', 'Pa$$word123', @var)";
 		ResultSet output = db.runQuery(newuserstr);
 		System.out.println(output);
