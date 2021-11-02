@@ -18,7 +18,7 @@ class LoginTest {
 		DBConnect db;
 		db = new DBConnect();
 		db.connect();
-		String newuserstr = "CALL createNewUser('Harison','harison@Test.com', 'Harison', 'Wright', 10, 'Lane Street', 'S1 0PD', '07657865456', 'Pa$$word123')";
+		String newuserstr = "CALL createNewUser('Harison','harison@Test.com', 'Harison', 'Wright', '07657865456', 'Pa$$word123', '@var')";
 		ResultSet output = db.runQuery(newuserstr);
 		System.out.println(output);
 		
