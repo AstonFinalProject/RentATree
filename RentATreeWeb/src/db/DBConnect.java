@@ -19,6 +19,7 @@ public class DBConnect {
 		this.url = "jdbc:mysql://localhost:3306/"+this.database+"?useTimezone=true&serverTimezone=GMT";
 		System.out.println(this.url);
 		DBConnect.registerOjdbcDriver();
+		this.connect();
 	}
 	
 	public void connect() {
@@ -121,7 +122,7 @@ public class DBConnect {
 		}
 	}
 	
-	private ArrayList<String> getColumnNames(ResultSet rs){
+	public ArrayList<String> getColumnNames(ResultSet rs){
 		ArrayList<String> columns = new ArrayList<String>();
 		
 		try {
