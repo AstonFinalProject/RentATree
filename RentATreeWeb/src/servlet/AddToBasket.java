@@ -6,8 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import util.BasketHandler;
+import javax.servlet.http.HttpSession;
+import javax.*;
+import models.*;
 
 /**
  * Servlet implementation class AddToBasket
@@ -28,25 +29,24 @@ public class AddToBasket extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("pid")!=null && request.getParameter("qty")!=null) {
-			// Need to know WHAT is being purchased as well as HOW MANY
-			int pid = Integer.valueOf(request.getParameter("pid"));
-			int qty = Integer.valueOf(request.getParameter("qty"));
-			System.out.println("Purchase "+qty+" of product id "+pid);
-			if(BasketHandler.addToBasket(pid, qty)){
-				response.sendRedirect("basket.jsp");
-				return;
-			}
-		}
-		response.sendRedirect("error.jsp");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			String value = request.getParameter("add");
+			HttpSession session = request.getSession();
+			Basket b = (Basket)session.getAttribute("basket");
+			System.out.println(value);
+			b.addToBasket(Integer.parseInt(value));
+			response.sendRedirect("Shop.jsp");
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 	}
 
 }

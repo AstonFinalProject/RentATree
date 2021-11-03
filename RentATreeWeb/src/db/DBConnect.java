@@ -15,9 +15,9 @@ public class DBConnect {
 		conn = null;
 		this.database  = "rentatree";
 		this.username = "root";
-		this.password = "Pa$$word123";
+		this.password = "pass";
 		this.url = "jdbc:mysql://localhost:3306/"+this.database+"?useTimezone=true&serverTimezone=GMT";
-		System.out.println(this.url);
+		//System.out.println(this.url);
 		DBConnect.registerOjdbcDriver();
 		this.connect();
 	}
@@ -30,13 +30,13 @@ public class DBConnect {
 					this.password);
 			
 		} catch (SQLException e) {
-			System.out.println("Connection failed.");
+			//System.out.println("Connection failed.");
 			e.printStackTrace();
 			return;
 		}
 
 		if (conn != null) {
-			System.out.println("Connection established.");
+			//System.out.println("Connection established.");
 		}
 		else {
 			System.out.println("Connection null still.");

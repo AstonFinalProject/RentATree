@@ -1,5 +1,4 @@
-html,
-body{
+html, body{
   height: 100%;
 }
 
@@ -82,4 +81,32 @@ body {
 
 #FormFill{
 	font-size:95%;
+}
+
+/*
+Checkout page
+*/
+
+.container {
+	max-width: 800px;
+	max-height:980px; 
+}
+
+#Discount {
+	color:red;
+}
+
+/*
+Homepage
+*/
+
+.row{
+	margin-bottom:16px 
+}
+
+.navbar {
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 }

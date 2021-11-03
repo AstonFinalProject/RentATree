@@ -9,9 +9,13 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js /bootstrap.bundle.min.js" integrity="sha384 -gtEjrD/ SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 	<link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity ="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin ="anonymous">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="text-center">
+<%@include file="navbar.jsp" %>
 <main class="form-signin">
 	<form action="NewUser.jsp" method="POST">
 		<!--<img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
@@ -22,22 +26,22 @@
 		</div>
 	
 	<div class="form-floating">
-		<input class="form-control" id="floatingInput" name="username">
+		<input class="form-control" id="floatingInput" placeholder="Username" name="username">
 		<label for="floatingInput">Username</label>
 	</div>
 	
 	<div class="form-floating">
-		<input type="email" class="form-control" id="floatingInput" name="email">
+		<input type="email" class="form-control" id="floatingInput" placeholder="Email" name="email">
 		<label for="floatingInput">Email address</label>
 	</div>
 	
 	<div class="form-floating">
-		<input class="form-control" id="floatingInput" name="fname">
+		<input class="form-control" id="floatingInput" placeholder="First Name" name="fname">
 		<label for="floatingInput">First Name</label>
 	</div>
 	
 	<div class="form-floating">
-		<input  class="form-control" id="floatingInput" name="lname">
+		<input  class="form-control" id="floatingInput" placeholder="Last Name" name="lname">
 		<label for="floatingInput">Last Name</label>
 	</div>
 	
@@ -47,12 +51,12 @@
 	</div>
 	
 	<div class="form-floating">
-		<input type="password" class="form-control" id="floatingPassword" name="pass">
+		<input type="password" class="form-control" placeholder="Password" id="floatingPassword" name="pass">
 		<label for="floatingPassword">Password</label>
 	</div>
 	
 	<div class="form-floating">
-		<input type="password" class="form-control" id="floatingPassword" name="cpass">
+		<input type="password" class="form-control" placeholder="Confirm Password" id="floatingPassword" name="cpass">
 		<label for="floatingPassword">Confirm Password</label>
 	</div>
 	

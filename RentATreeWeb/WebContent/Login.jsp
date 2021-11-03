@@ -6,27 +6,31 @@
 
 <head>
 	<title>Sign in</title>
+	<script src="http://code.jquery.com/jquery-2.2.4.js" type="text/javascript"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
-
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="text-center">
+<%@include file="navbar.jsp" %>
 <main class="form-signin">
 	<form action="Login.jsp" method="POST">
 		<!--<img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
 		<img class="mb-4" src="static/RentATree-logos.jpeg" alt="" width="80" height="68">
 		<h1 class="h3 mb-3 fw-normal">Please sign up</h1>
-	
 	<div class="form-floating">
-		<input type="text" class="form-control" id="floatingInput" name="username">
-		<label for="floatingInput">Email address</label>
+		<input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" required autofocus>
+		<label for="floatingInput" >Email address</label>
 	</div>
-    
+    <br>
 	<div class="form-floating">
-		<input type="password" class="form-control" id="floatingPassword" name="password">
-		<label for="floatingPassword">Password</label>
+		<input type="password" class="form-control" placeholder="Password" id="floatingPassword" name="password" required>
+		<label for="floatingPassword" >Password</label>
+
 	</div>
 
 	<div class="checkbox mb-3">
@@ -47,9 +51,10 @@
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		Login lObj = new Login(username, password);
+		session.setAttribute("username", username);
 		int output = lObj.loginUser();
 		if(output==1){
-			response.sendRedirect("http://localhost:18080/RentATreeWeb/Home.jsp");
+			response.sendRedirect("http://localhost:18080/RentATreeWeb/Shop.jsp");
 		}
 	%>
 </main>

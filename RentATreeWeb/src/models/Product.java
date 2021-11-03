@@ -12,6 +12,7 @@ public class Product {
 		this.SupplierName = Supplier;
 		this.id = id;
 		this.price = price;
+		this.height = height;
 	}
 	
 	public String getType() {

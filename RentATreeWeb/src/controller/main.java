@@ -1,6 +1,9 @@
 package controller;
 import db.ProductDBHandler;
+import models.Basket;
 import models.Product;
+import models.ProductFilter;
+
 import java.util.*;
 
 public class Main {
@@ -10,5 +13,7 @@ public class Main {
 		for(Product tree: p) {
 			System.out.println(tree);
 		}
+	
+		System.out.println(ProductFilter.uniqueTypes());
 	}
 }

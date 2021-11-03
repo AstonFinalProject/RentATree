@@ -22,11 +22,12 @@ public class ProductDBHandler {
 				int id = rs.getInt("ProductID");
 				int price = rs.getInt("Price");
 				int height = rs.getInt("Height");
+	
 				String type = rs.getString("TreeDescriptionMaster.TreeType");
 				String desc = rs.getString("TreeDescriptionMaster.TreeDescription");
 				String material = rs.getString("TreeDescriptionMaster.TreeMaterial");
 				String suppliername = rs.getString("TreeSupplierMaster.SupplierName");
-				Product prod = new Product(id, price, height, type, desc, material, suppliername);
+				Product prod = new Product(id, height, price, type, material, desc, suppliername);
 				prods.add(prod);
 			}
 		}catch(Exception e) {
