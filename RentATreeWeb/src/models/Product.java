@@ -38,6 +38,6 @@ public class Product {
 	}
 	
 	public String toString() {
-		return this.id + this.height+this.material+this.treeDescription+this.SupplierName+this.type;
+		return "ID: "+ this.id +" Height: "+ this.height +" Material: "+this.material+" Desc: "+this.treeDescription+" Supplier: "+this.SupplierName+" Type: "+this.type;
 	}
 }

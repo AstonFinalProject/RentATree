@@ -24,7 +24,14 @@ public class Basket {
 		return this.inBasket;
 	}
 	public void remove(int pid) {
-		
+		for(Product p : this.prods) {
+			if(p.getID()==pid) {
+				this.inBasket.remove(p);
+				break;
+			}
+		}
+		System.out.println("removed"+pid);
+		System.out.println(this.prods);
 	}
 	
 }

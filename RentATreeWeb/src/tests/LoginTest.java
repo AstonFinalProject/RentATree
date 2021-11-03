@@ -11,12 +11,12 @@ import db.Login;
 class LoginTest {
 
 	@Test
-	void test() {
+	void loginUserNotExistTest() {
 		Login l = new Login("Test999", "Test999");
 		int success = l.loginUser();
 		assertNotEquals(success, 1); // should reject as no user Test999 with password Test999 in database.
-		
-		// add test user Harison with password Pa$$word123 - DO THIS Manually else test might fail because of user creation not login
+	}
+		// add test user Harison987 with password NotAPassword - DO THIS Manually else test might fail because of user creation not login
 		
 		//DBConnect db;
 		//db = new DBConnect();
@@ -25,15 +25,19 @@ class LoginTest {
 		//String newuserstr = "CALL createNewUser('Harison','harison@Test.com', 'Harison', 'Wright', '07657865456', 'Pa$$word123', @var)";
 		//ResultSet output = db.runQuery(newuserstr);
 		//System.out.println(output);
-		
-		Login l2 = new Login("Harison", "Test");
+	
+	@Test
+	void loginUserIncorrectPassTest() {
+		Login l2 = new Login("Harison987", "Test");
 		int success2 = l2.loginUser();
-		assertNotEquals(success2, 1); // should reject as user Harison as password is not Test
-		
+		assertNotEquals(success2, 1); // should reject as user Harison987 password is not Test
+	}
+	
+	@Test
+	void loginUserTest() {
 		Login l3 = new Login("Harison987", "NotAPassword");
 		int success3 = l3.loginUser();
-		assertEquals(success3, 1); // should pass
-	
+		assertEquals(1, success3); // should pass
 	}
 
 }
