@@ -19,7 +19,7 @@ class ProductTest {
 	String type;
 	String material;
 	String desc;
-	String Supplier;
+	String supplier;
 	Product product;
 	
 	@BeforeEach
@@ -30,8 +30,8 @@ class ProductTest {
 		type = "Fir";
 		material = "PVC";
 		desc = "A beautiful tree :)";
-		Supplier = "Harisons Really Nice Trees";
-		product = new Product(id, height, price, type, material, desc, Supplier);
+		supplier = "Harisons Really Nice Trees";
+		product = new Product(id, height, price, type, material, desc, supplier);
     }
 	
 	@Test

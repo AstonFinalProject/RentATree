@@ -28,4 +28,20 @@ public class Login {
 		}
 		return output;
 	}
+	
+	public int loginAdmin() {
+		int output = 0;
+		try {
+			String loginSQL = "call adminLogin(?,?,?)";
+			ArrayList<String> params = new ArrayList<String>();
+			params.add(username);
+			params.add(password);
+			System.out.println(username);
+			output = db.execSP(params, loginSQL);
+			System.out.println(output);
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return output;
+	}
 }
