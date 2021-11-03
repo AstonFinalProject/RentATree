@@ -30,7 +30,7 @@ class LoginTest {
 		int success2 = l2.loginUser();
 		assertNotEquals(success2, 1); // should reject as user Harison as password is not Test
 		
-		Login l3 = new Login("Harison", "Pa$$word123");
+		Login l3 = new Login("Harison987", "NotAPassword");
 		int success3 = l3.loginUser();
 		assertEquals(success3, 1); // should pass
 	

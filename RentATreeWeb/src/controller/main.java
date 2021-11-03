@@ -1,9 +1,8 @@
 package controller;
-import db.ProductDBHandler;
+import db.*;
 import models.Basket;
 import models.Product;
-import models.ProductFilter;
-
+import models.Transactions;
 import java.util.*;
 
 public class main {
@@ -14,6 +13,10 @@ public class main {
 			System.out.println(tree);
 		}
 	
-		System.out.println(ProductFilter.uniqueTypes());
+		Basket b = new Basket(p);
+		b.addToBasket(3);
+		Transactions t = new Transactions(b, "Test", "", "");
+		TransactionDBHandler handler = new TransactionDBHandler(t);
+		handler.enterTransaction();
 	}
 }

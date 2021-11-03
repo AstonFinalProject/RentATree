@@ -53,11 +53,12 @@
 			Discount Buy one Get the other half price!</span></marquee>
 		</div>
 	</div>
+	<form action = "${pageContext.request.contextPath}/ProductFilterServlet" method="post">
 		<p>Please select your tree type</p>
 		<% for(String t: ProductFilter.uniqueTypes()) {%>
 		<div class="form-check">
 			
-			<input type="checkbox" class="form-check-input" id="type<%=t %>" value="<%=t%>">
+			<input type="checkbox" class="form-check-input" name="type" value="<%=t%>">
 			<label class="form-check-label" for="type"><%=t %></label>
 		</div>
 		<%} %>
@@ -65,15 +66,14 @@
 		<% for(String m: ProductFilter.uniqueMaterials()){ %>
 		<div class="form-check">
 			
-			<input type="checkbox" class="form-check-input" id="material<%=m %>" value="<%=m%>">
+			<input type="checkbox" class="form-check-input" name="material" value="<%=m%>">
 			<label class="form-check-label" for="type"><%=m %></label>
 		</div>
 		<%} %>
-
+		<p><br>Please select your tree supplier</p>
 		<%for(String s: ProductFilter.uniqueSuppliers()){ %>
 		<div class="form-check">
-		<p><br>Please select your tree supplier</br></p>
-			<input type="checkbox" class="form-check-input" id="supplier<%=s%>" value="<%=s%>">
+			<input type="checkbox" class="form-check-input" name="supplier" value="<%=s%>">
 			<label class="form-check-label" for="type"><%=s %></label>
 		</div>
 		<%} %>
@@ -89,17 +89,23 @@
 			<input type="range" min="0" max="400" value="200" class="slider1" id="myRange1">
 			<p>Value: <span id="demo1"></span></p>
 		</div>
-
+		  <br><input type="submit" value="SUBMIT">
 	</div>
-
+	</form>
 	<br>
   <div class="container marketing">
 	<form action = "${pageContext.request.contextPath}/AddToBasket" method="post">
     <!-- Three columns of text below the carousel -->
     <%
     	ArrayList<Product> prods = new ArrayList<Product>();
-    	ProductDBHandler h = new ProductDBHandler();
-    	prods = h.getProducts();
+    	if(session.getAttribute("products")==null){
+    		ProductDBHandler h = new ProductDBHandler();
+        	prods = h.getProducts();
+        	session.setAttribute("products", prods);
+    	}else{
+    		prods = (ArrayList)session.getAttribute("products");
+    	}
+    	
     	if(session.getAttribute("basket") == null){
     		session.setAttribute("basket", new Basket(prods));
     	}
