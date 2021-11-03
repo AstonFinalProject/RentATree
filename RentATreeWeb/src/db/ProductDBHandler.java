@@ -10,7 +10,8 @@ public class ProductDBHandler {
 		String sql = "SELECT ProductID, Height, Price, TreeDescriptionMaster.TreeType, TreeDescriptionMaster.TreeMaterial, TreeDescriptionMaster.TreeDescription,";
 		sql+= "TreeSupplierMaster.SupplierName FROM ProductDescription INNER JOIN TreeDescriptionMaster ";
 		sql+= "ON TreeDescriptionMaster.TreeID = ProductDescription.TreeID INNER JOIN TreeSupplierMaster ";
-		sql+= "ON TreeSupplierMaster.SupplierID = ProductDescription.SupplierID";
+		sql+= "ON TreeSupplierMaster.SupplierID = ProductDescription.SupplierID ";
+		sql+= "ORDER BY ProductID";
 		return db.runQuery(sql);
 	}
 	

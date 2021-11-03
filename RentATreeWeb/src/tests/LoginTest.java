@@ -16,7 +16,7 @@ class LoginTest {
 		int success = l.loginUser();
 		assertNotEquals(success, 1); // should reject as no user Test999 with password Test999 in database.
 		
-		// add test user Harison with password Pa$$word123 - DO THIS Manually else test might fail because of user creation not login
+		// add test user Harison987 with password NotAPassword - DO THIS Manually else test might fail because of user creation not login
 		
 		//DBConnect db;
 		//db = new DBConnect();
@@ -26,11 +26,11 @@ class LoginTest {
 		//ResultSet output = db.runQuery(newuserstr);
 		//System.out.println(output);
 		
-		Login l2 = new Login("Harison", "Test");
+		Login l2 = new Login("Harison987", "Test");
 		int success2 = l2.loginUser();
-		assertNotEquals(success2, 1); // should reject as user Harison as password is not Test
+		assertNotEquals(success2, 1); // should reject as user Harison987 password is not Test
 		
-		Login l3 = new Login("Harison", "Pa$$word123");
+		Login l3 = new Login("Harison987", "NotAPassword");
 		int success3 = l3.loginUser();
 		assertEquals(success3, 1); // should pass
 	
