@@ -2,32 +2,75 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import db.ProductDBHandler;
 import models.Product;
+import models.ProductFilter;
 
 class ProductTest {
 
+	int id;
+	int height;
+	int price;
+	String type;
+	String material;
+	String desc;
+	String Supplier;
+	Product product;
+	
+	@BeforeEach
+    public void setUp() {
+		id = 1;
+		height = 5;
+		price = 10;
+		type = "Fir";
+		material = "PVC";
+		desc = "A beautiful tree :)";
+		Supplier = "Harisons Really Nice Trees";
+		product = new Product(id, height, price, type, material, desc, Supplier);
+    }
+	
 	@Test
-	void test() {
-		int id = 1;
-		int height = 5;
-		int price = 10;
-		String type = "Fir";
-		String material = "PVC";
-		String desc = "A beautiful tree :)";
-		String Supplier = "Harisons Really Nice Trees";
-		Product product = new Product(id, height, price, type, material, desc, Supplier);
-		
-		// test getters
-		assertEquals(1, product.getID());
-		assertEquals(5, product.getHeight());
-		assertEquals(10, product.getPrice());
-		assertEquals("Fir", product.getType());
-		assertEquals("PVC", product.getMaterial());
-		assertEquals("A beautiful tree :)", product.getTreeDescription());
-		assertEquals("Harisons Really Nice Trees", product.getSupplierName());
-		
+	public void getIDTest() {
+	assertEquals(1, product.getID());
+	}
+	
+	@Test
+	public void getHeightTest() {
+	assertEquals(5, product.getHeight());
+	}
+	
+	@Test
+	public void getPriceTest() {
+	assertEquals(10, product.getPrice());
+	}
+	
+	@Test
+	public void getTypeTest() {
+	assertEquals("Fir", product.getType());
+	}
+	
+	@Test
+	public void getMaterialTest() {
+	assertEquals("PVC", product.getMaterial());
+	}
+	
+	@Test
+	public void getTreeDescriptionTest() {
+	assertEquals("A beautiful tree :)", product.getTreeDescription());
+	}
+	
+	@Test
+	public void getSupplierNameTest() {
+	assertEquals("Harisons Really Nice Trees", product.getSupplierName());
+	}
+	
+	@Test
+	void multiProductTest() {
 		
 		//test 2nd product
 		int id2 = 2;
@@ -51,14 +94,6 @@ class ProductTest {
 	
 	@Test
 	void toStringTest() {
-		int id = 1;
-		int height = 5;
-		int price = 10;
-		String type = "Fir";
-		String material = "PVC";
-		String desc = "A beautiful tree :)";
-		String Supplier = "Harisons Really Nice Trees";
-		Product product = new Product(id, height, price, type, material, desc, Supplier);
 		
 		assertEquals(
 				"ID: 1 Height: 5 Material: PVC Desc: A beautiful tree :) Supplier: Harisons Really Nice Trees Type: Fir"

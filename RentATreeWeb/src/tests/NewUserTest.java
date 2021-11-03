@@ -9,7 +9,7 @@ import db.NewUser;
 class NewUserTest {
 
 	@Test
-	void test() {
+	public void createUserAlreadyExistsTest() {
 		
 		// ensure test sql script has been reloaded so database is in its test state
 		
@@ -18,6 +18,10 @@ class NewUserTest {
 		int output = nu.createUser();
 		assertEquals(output, -1); // should fail as already exists
 		
+	}
+	
+	@Test
+	public void createUserTest() {
 		String[] params2 = {"Harison9999", "WrightHarison1@9999.com", "Harison", "Wright", "07526458792", "NotAPassword"};
 		NewUser nu2 = new NewUser(params2);
 		int output2 = nu2.createUser();
