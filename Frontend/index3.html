@@ -56,7 +56,8 @@
             </div>
             <span class="text-success">-£5</span>
           </li>
-		  <li class="list-group-item d-flex justify-content-between bg-light">
+
+		  <!-- <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
               <h6 class="my-0">Delivery Fee</h6>
               <small>Extra £3.99 fee for selected am/pm slot</small>
@@ -67,7 +68,11 @@
             <span>Total (USD)</span>
             <strong>$20</strong>
           </li>
-        </ul>
+        </ul> -->
+
+        <!--drop-->
+
+
 
         <form class="card p-2">
           <div class="input-group">
@@ -81,7 +86,7 @@
         <h4 class="mb-3">Billing address</h4>
         <form class="needs-validation" novalidate>
           <div class="row g-3">
-            <div class="col-sm-6">
+            <!-- <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
               <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
               <div class="invalid-feedback">
@@ -95,9 +100,9 @@
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
-            </div>
+            </div> -->
 
-            <div class="col-12">
+            <!-- <div class="col-12">
               <label for="username" class="form-label">Username</label>
               <div class="input-group has-validation">
                 <span class="input-group-text">@</span>
@@ -114,7 +119,7 @@
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
-            </div>
+            </div> -->
 
             <div class="col-12">
               <label for="address" class="form-label">Address</label>
@@ -169,15 +174,37 @@
 
           <hr class="my-4">
 
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="same-address">
-            <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-          </div>
+        <!-- drop down menu-->
 
-          <div class="form-check">
+			<div class="drop-down menu">
+			<label for="deliveryslot">Choose a delivery slot (extra £3.99 fee):</label>
+				<select name="deliveryslot" id="deliveryslot">
+					<option value="am" id="am"> AM slot </option>
+					<option value="pm" id="pm"> PM slot </option>
+					<option value="anytime" id="anytime"> Anytime(Free) </option>
+				</select>
+			</div>
+
+      <div class="drop-down menu">
+        <label for="returnslot"><br>Choose a return delivery slot: </br></label>
+          <select name="deliveryslot" id="deliveryslot">
+            <option value="am" id="am"> AM slot </option>
+            <option value="pm" id="pm"> PM slot </option>
+          </select>
+        </div>
+      
+
+          <!-- <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="deliveryslot">
+            <label class="form-check-label" for="deliveryslot">Please </label>
+          </div> -->
+
+          <!--return policy-->
+
+          <!-- <div class="form-check">
             <input type="checkbox" class="form-check-input" id="save-info">
             <label class="form-check-label" for="save-info">Save this information for next time</label>
-          </div>
+          </div> -->
 
           <hr class="my-4">
 
