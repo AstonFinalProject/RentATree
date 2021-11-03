@@ -1,10 +1,12 @@
-package db;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.ResultSet;
 
 import org.junit.jupiter.api.Test;
+
+import db.Login;
 
 class LoginTest {
 

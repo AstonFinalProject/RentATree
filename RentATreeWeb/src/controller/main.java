@@ -6,7 +6,7 @@ import models.ProductFilter;
 
 import java.util.*;
 
-public class Main {
+public class main {
 	public static void main(String[] args) {
 		ProductDBHandler h = new ProductDBHandler();
 		ArrayList<Product> p = h.getProducts();
