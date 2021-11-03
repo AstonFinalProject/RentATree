@@ -37,7 +37,7 @@ class LoginTest {
 	void loginUserTest() {
 		Login l3 = new Login("Harison987", "NotAPassword");
 		int success3 = l3.loginUser();
-		assertEquals(success3, 1); // should pass
+		assertEquals(1, success3); // should pass
 	}
 
 }

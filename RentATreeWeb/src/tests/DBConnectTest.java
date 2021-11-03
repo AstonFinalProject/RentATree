@@ -12,11 +12,35 @@ import db.DBConnect;
 class DBConnectTest {
 
 	@Test
-	void test() throws SQLException {
+	void testConnection() throws SQLException {
 		DBConnect db;
 		db = new DBConnect();
 		//db.connect();
 		
+		Connection conn = db.getConn();
+		assertEquals(true, conn.isValid(0)); // check db connection has worked
+	}
+
+	@Test
+	void testCloseConnection() throws SQLException {
+		DBConnect db;
+		db = new DBConnect();
+		//db.connect();
+		
+		Connection conn = db.getConn();
+		assertEquals(true, conn.isValid(0)); // check db connection has worked
+		
+		
+		db.close();
+		assertEquals(false, conn.isValid(0)); // check db connection has been terminated
+		
+	}
+	
+	@Test
+	void testReConnection() throws SQLException {
+		DBConnect db;
+		db = new DBConnect();
+		//db.connect();
 		
 		Connection conn = db.getConn();
 		assertEquals(true, conn.isValid(0)); // check db connection has worked
@@ -29,5 +53,4 @@ class DBConnectTest {
 		Connection conn2 = db.getConn();
 		assertEquals(true, conn2.isValid(0)); // check db connection has been re-instated
 	}
-
 }
