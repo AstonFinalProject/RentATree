@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-   <%@page import = "db.*" %>
-  <%@page import = "models.*" %>
-  <%@page import = "java.util.*" %>
+<%@page import = "db.*" %>
+<%@page import = "models.*" %>
+<%@page import = "java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +14,30 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<script src="js/bootstrap.js"></script>
 	<script src="js/jquery-3.6.0.min.js"></script>
+	<script>
+	function validateForm(){
+		let address = document.forms["billing"]["address"].value;
+		let street = document.forms["billing"]["address2"].value;
+		let city = document.forms["billing"]["city"].value;
+		let postcode = document.forms["billing"]["postcode"].value;
+		if(address==""){
+			alert("Address line 1 cannot be empty");
+			return false;
+		}
+		if(street==""){
+			alert("Address line 2 cannot be empty");
+			return false;
+		}
+		if(city==""){
+			alert("City cannot be empty");
+			return false;
+		}
+		if(postcode==""){
+			alert("Postcode cannot be empty");
+			return false;
+		}
+	}
+	</script>
 </head>
 <%@include file="navbar.jsp" %>
 <body class="bg-light">
@@ -36,7 +60,7 @@
           <% 
           	Basket b = (Basket)session.getAttribute("basket"); 
           	String username = (String)session.getAttribute("username");
-	        Transactions t = new Transactions(b,username, "", "");
+	        Transactions t = new Transactions(b,username, "", "", "", "");
         %>
           <span class="badge bg-primary rounded-pill"><%=b.getBasket().size() %></span>
         </h4>
@@ -84,45 +108,26 @@
 
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
-        <form class="needs-validation" novalidate action = "${pageContext.request.contextPath}/ExecOrder" method="post">
+        
+        <form name="billing" class="needs-validation" novalidate action = "${pageContext.request.contextPath}/ExecOrder" onsubmit="return validateForm()" method="post">
           <div class="row g-3">
 
             <div class="col-12">
-              <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+              <label for="address" class="form-label">Address (HouseNumber)</label>
+              <input type="text" class="form-control" name="address" placeholder="1234 Main St" required>
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
             </div>
 
             <div class="col-12">
-              <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+              <label for="address2" class="form-label">Address 2 <span class="text-muted"></span></label>
+              <input type="text" class="form-control" name="address2" placeholder="Apartment or suite">
             </div>
-
-
-			<div class="col-md-5">
-				<label for="country" class="form label">Country</label>
-				<input type="text" class="form-control" id="country" placeholder="" required>
-				<div class="invalid-feedback">
-                Please provide a valid country.
-              </div>
-            </div>
-			
-            <!-- <div class="col-md-5">
-              <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required>
-                <option value="">Choose...</option>
-                <option>United Kingdom</option>
-              </select>
-              <div class="invalid-feedback">
-                Please select a valid country.
-              </div>
-            </div> -->
 
             <div class="col-md-4">
               <label for="city" class="form-label">City</label>
-			  <input type="text" class="form-control" id="city" placeholder="" required>
+			  <input type="text" class="form-control" name="city" placeholder="" required>
 				<!-- <input> type="text" class="form-select" id="city" placeholder="" required</input> -->
               <div class="invalid-feedback">
                 Please provide a valid city.
@@ -131,7 +136,7 @@
 
             <div class="col-md-3">
               <label for="postcode" class="form-label">Post code</label>
-              <input type="text" class="form-control" id="postcode" placeholder="" required>
+              <input type="text" class="form-control" name="postcode" placeholder="" required>
               <div class="invalid-feedback">
                 Post code required.
               </div>
@@ -144,18 +149,17 @@
 
 			<div class="drop-down menu">
 			<label for="deliveryslot">Choose a delivery slot (extra £3.99 fee):</label>
-				<select name="deliveryslot" id="deliveryslot">
-					<option value="am" id="am"> AM slot </option>
-					<option value="pm" id="pm"> PM slot </option>
-					<option value="anytime" id="anytime"> Anytime(Free) </option>
+				<select name="deliveryslot" >
+					<option value="am" id="am">AM</option>
+					<option value="pm" id="pm">PM</option>
 				</select>
 			</div>
 
       <div class="drop-down menu">
         <label for="returnslot"><br>Choose a return delivery slot: </br></label>
-          <select name="deliveryslot" id="deliveryslot">
-            <option value="am" id="am"> AM slot </option>
-            <option value="pm" id="pm"> PM slot </option>
+          <select name="returnslot" >
+            <option value="am" id="am">AM</option>
+            <option value="pm" id="pm">PM</option>
           </select>
         </div>
       
@@ -228,7 +232,7 @@
 
           <hr class="my-4">
 			
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Confirm Order</button>
         </form>
       </div>
     </div>

@@ -54,7 +54,7 @@ public class ProductFilterServlet extends HttpServlet {
 		ArrayList<Product> all = h.getProducts();
 		ProductFilter pf = new ProductFilter(all);
 		ArrayList<Product> filtered = all;
-		response.sendRedirect("Shop.jsp");
+		
 		if(valType!=null){
 			for(String t: valType) {
 				requiredValsType.add(t);
@@ -77,6 +77,6 @@ public class ProductFilterServlet extends HttpServlet {
 			filtered = pf.filterOnSupplier(requiredValsSup);
 		}
 		session.setAttribute("products", filtered);
-		
+		response.sendRedirect("Shop.jsp");
 	}
 }

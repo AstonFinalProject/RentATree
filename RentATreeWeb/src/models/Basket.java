@@ -9,6 +9,10 @@ public class Basket {
 		this.inBasket = new ArrayList<Product>();
 	}
 	
+	public Basket(Basket b) {
+		this.inBasket = b.getBasket();
+	}
+	
 	public void addToBasket(int pid) {
 		for(Product p : this.prods) {
 			if(p.getID()==pid) {
@@ -34,4 +38,7 @@ public class Basket {
 		System.out.println(this.prods);
 	}
 	
+	public void clearBasket() {
+		this.inBasket.clear();
+	}
 }

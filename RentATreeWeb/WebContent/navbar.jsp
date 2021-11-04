@@ -29,7 +29,7 @@
                 <!-- <img class="mb-4" src="basket2.jpg" alt="" width="40" height="30" href="#">Link</a>>
                 <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>  -->
 
-                <a href="Checkout.jsp"> <!--change link to basket-->
+                <a href="CheckLogin"> <!--change link to basket-->
                     <img src="static/basket2.png"
                     width="46" height="36">
                  </a>
@@ -44,6 +44,9 @@
                <%=navb.getBasket().size()%> </font>&nbsp; </span> <!--updqate item in basket-->
 			<a href="Login.jsp"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
 			<a href="NewUser.jsp"><button type="button" class="btn btn-primary">Sign-up</button></a>
+			<%if(session.getAttribute("username")!=null) {%><br>
+			<a href="Logout"><button type="button" class="btn btn-outline-primary me-2">Logout</button></a>
+			<%} %>
 		</form>
       </div>
     </div>
