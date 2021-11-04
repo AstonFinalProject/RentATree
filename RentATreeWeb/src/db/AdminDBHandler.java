@@ -17,8 +17,8 @@ public class AdminDBHandler {
 		db.runQuery("CALL incrementMiss "+Username);
 	}
 	
-	public void insertTree(String TreeType, String SupplierName, double Height, double Price) {
-		db.runQuery("CALL insertNewProduct '"+TreeType+"', '"+SupplierName+"', "+Height+", "+Price);
+	public void insertTree(String TreeType, String TreeMaterial, String SupplierName, double Height, double Price) {
+		db.runQuery("CALL insertTree '"+TreeType+"', '"+TreeMaterial+"', '"+SupplierName+"', "+Height+", "+Price);
 	}
 	
 	public void deleteTree(int ProductID) {
