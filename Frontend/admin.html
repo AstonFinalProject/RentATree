@@ -21,23 +21,19 @@
             <p class="lead text-muted"><b>Administrator changes</b></p>
             <label for="customerid" class="form-label">Please enter the customer ID</label>
               <input type="text" class="form-control" id="customerid" placeholder="CustomerID" required>
+            
             <p>
               <a href="#" class="btn btn-primary my-2">Hit</a>
               <a href="#" class="btn btn-secondary my-2">Miss</a>
             </p>
 
-            <p class="lead text-muted"><b>Amend the stock</b></p>
-                <label for="itemname" class="form-label">Tree name:</label>
-                    <input type="text" class="form-control" id="itemname" placeholder="Tree name" required>
+            <p class="lead text-muted"><b>Add a new tree</b></p>
 
-                <label for="itemdescription" class="form-label">Description:</label>
-                    <input type="text" class="form-control" id="itemdescription" placeholder="Description" required>
+                <label for="itemtype" class="form-label">Tree type:</label>
+                    <input type="text" class="form-control" id="itemtype" placeholder="Tree type" required>
 
-                <label for="itemstock" class="form-label">Stock:</label>
-                    <input type="text" class="form-control" id="itemstock" placeholder="Stock" required>
-
-                <label for="itemsupplier" class="form-label">Supplier:</label>
-                    <input type="text" class="form-control" id="itemsupplier" placeholder= "Supplier" required>
+                <label for="itemsupplier" class="form-label">Supplier Name:</label>
+                    <input type="text" class="form-control" id="itemsupplier" placeholder= "Supplier Name" required>
 
                 <label for="itemheight" class="form-label">Height:</label>
                     <input type="text" class="form-control" id="itemheight" placeholder="Height" required>
@@ -52,6 +48,39 @@
 
               <p>
                 <a href="#" class="btn btn-primary my-2">Add</a>
+            </p>
+            
+            <p class="lead text-muted"><b>Delete a tree</b></p>
+                <label for="treeid" class="form-label">Tree ID:</label>
+                    <input type="text" class="form-control" id="treeid" placeholder="Tree ID" required>
+
+              <p>
+                <a href="#" class="btn btn-primary my-2">Remove</a>
+            </p>
+
+
+            <!--Add a new tree type-->
+            <p class="lead text-muted"><b>Add a new tree type:</b></p>
+
+                <label for="itemtype" class="form-label">Tree type:</label>
+                    <input type="text" class="form-control" id="itemtype" placeholder="Tree type" required>
+
+                <label for="itemmaterial" class="form-label">Tree material:</label>
+                    <input type="text" class="form-control" id="itemmaterial" placeholder="Tree material" required>
+
+                <label for="itemdescription" class="form-label">Description:</label>
+                    <input type="text" class="form-control" id="itemdescription" placeholder="Description" required>
+
+              <p>
+                <a href="#" class="btn btn-primary my-2">Add</a>
+            </p>
+
+            <p class="lead text-muted"><b>Delete a tree type</b></p>
+                <label for="treetype" class="form-label">Tree type:</label>
+                    <input type="text" class="form-control" id="treetype" placeholder="Tree type" required>
+
+              <p>
+                <a href="#" class="btn btn-primary my-2">Remove</a>
             </p>
 
             <!-- Current stock
