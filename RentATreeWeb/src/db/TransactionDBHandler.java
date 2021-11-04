@@ -19,7 +19,7 @@ public class TransactionDBHandler {
 			String sp = "call userTransaction(?,?,?,?,?)";
 			CallableStatement cs = this.db.getCallableStatement(sp);
 			cs.setString(1, this.t.getUsername());
-			cs.setInt(2, this.t.getTotalCost());
+			cs.setDouble(2, this.t.getTotalCost());
 			cs.registerOutParameter(3, Types.INTEGER);
 			cs.setString(4, this.t.getDeliverySlot());
 			cs.setString(5, this.t.getReturnSlot());

@@ -77,6 +77,7 @@ public class ExecOrder extends HttpServlet {
 		}
 		session.setAttribute("invoiceBasket", invoiceBasket);
 		session.setAttribute("totalcost", t.getTotalCost());
+		session.setAttribute("discount", t.getDiscount());
 		b.clearBasket();
 		response.sendRedirect("Invoice.jsp");
 	}
