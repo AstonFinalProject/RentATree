@@ -17,9 +17,8 @@ public class AdminDBHandler {
 		db.runQuery("CALL incrementMiss "+Username);
 	}
 	
-	public void insertTree(int TreeTypeID, int SupplierID, double Height, double Price) {
-		int TreeID = TreeTypeID; // avoids confusion between ProductID and TreeID
-		db.runQuery("CALL insertNewProduct "+TreeID+", "+SupplierID+", "+Height+", "+Price);
+	public void insertTree(String TreeType, String SupplierName, double Height, double Price) {
+		db.runQuery("CALL insertNewProduct '"+TreeType+"', '"+SupplierName+"', "+Height+", "+Price);
 	}
 	
 	public void deleteTree(int ProductID) {
@@ -30,8 +29,8 @@ public class AdminDBHandler {
 		db.runQuery("CALL newTreeDescriptionMaster '"+TreeDescription+"', '"+TreeType+"', '"+TreeMaterial+"', 0");
 	}
 	
-	public void deleteTreeType(int TreeID) {
-		db.runQuery("CALL deleteTreeType "+TreeID);
+	public void deleteTreeType(String TreeType) {
+		db.runQuery("CALL deleteTreeType "+TreeType);
 	}
 	
 }
