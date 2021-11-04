@@ -18,25 +18,33 @@
 	<script src="js/bootstrap.js"></script>
 	<script src="js/jquery-3.6.0.min.js"></script>
 			
-		<script>
-			var slider = document.getElementById("myRange");
-			var output = document.getElementById("demo");
-			output.innerHTML = slider.value;
-
-			slider.oninput = function() {
-			output.innerHTML = this.value;
-}
-
-
-		<!-- second slider script-->	
-			var slider1 = document.getElementById("myRange1");
-			var output1 = document.getElementById("demo1");
-			output1.innerHTML = slider1.value;
-
-			slider1.oninput = function() {
-			output1.innerHTML = this.value;
-}
-</script>
+	<script>
+			
+			function showValS1(newVal){
+			    document.getElementById("val1").innerHTML=newVal;
+			}
+			function showValS2(newVal){
+			    document.getElementById("val2").innerHTML=newVal;
+			}
+			function validateDates(){
+				let datemin = document.forms["dates"]["rentfrom"].value;
+				let datemax = document.forms["dates"]["rentto"].value;
+				if(datemax<datemin){
+					alert("Lease end less than Lease start");
+					return false;
+				}
+				const validMonths = [11,0];
+				console.log(datemin.getMonth());
+				if(validMonths.includes(datemin.getMonth())==false){
+					alert("Lease can only be in December or January");
+					return false;
+				}
+				if(!validMonths.includes(datemax.getMonth())==false){
+					alert("Lease can only be in December or January");
+					return false;
+				}
+			}
+	</script>
 		
 </head>
 
@@ -47,13 +55,33 @@
 	
 	<div align="center">
 		
-		<div align=top>
+	<div align="top">
 	<marquee behavior="alternate" bgcolor="#4BB060" direction="left" height="" loop="7" scrollamount="1" scrolldelay="2" width="100%">
 		<span style="font-size: 20px;color:#FFFFFF">
 			Discount Buy one Get the other half price!</span></marquee>
 		</div>
 	</div>
-	<form action = "${pageContext.request.contextPath}/ProductFilterServlet" method="post">
+	<br>	
+			<div class="container">
+			<div class = "pb-2 mt-4 mb-2 border-bottom">
+			Booking from <%= (String) session.getAttribute("start") %> to <%=(String)session.getAttribute("end") %>
+			</div>
+			</div>
+			<form name="dates" onsubmit="return validateDates()" action = "${pageContext.request.contextPath}/DateFilter" method="post">
+				<label>
+				  Choose your preferred Rent From date (required, Dec 1st to Jan 14th):
+				  <input type="date" name="rentfrom" value="<%=(String)session.getAttribute("start") %>" required>
+				  <span class="validity"></span>
+				</label>
+				<label><br>
+				  Choose your preferred Rent To date (required, Dec 1st to Jan 14th):
+				  <input type="date" name="rentto" value="<%=(String)session.getAttribute("end") %>"required>
+				  <span class="validity"></span>
+				</label><br>
+				<button type="submit" class="btn btn-primary">Submit Dates</button>
+			</form>
+	<br>
+	<form action = "${pageContext.request.contextPath}/ProductFilterServlet" method="post" name="filters">
 		<p>Please select your tree type</p>
 		<% for(String t: ProductFilter.uniqueTypes()) {%>
 		<div class="form-check">
@@ -79,17 +107,17 @@
 		<%} %>
 		<div class="slidecontainer">
 			<p><br>Please select the max height of the tree (in cm)</br></p>
-			<input type="range" min="0" max="400" value="200" class="slider" id="myRange">
-			<p>Value: <span id="demo"></span></p>
+			<input type="range" min="0" max="400" value="200" class="slider" name="myRange" onchange="showval(this.value)" oninput="showval(this.value)">
+			<p>Value: <span id="val1"></span></p>
 		</div>
 		
 		<!-- second slider-->
 		<div class="slidecontainer">
 			<p><br>Please select the min height of the tree (in cm)</br></p>
-			<input type="range" min="0" max="400" value="200" class="slider1" id="myRange1">
-			<p>Value: <span id="demo1"></span></p>
+			<input type="range" min="0" max="400" value="200" class="slider1" name="myRange1" onchange="showval(this.value)" oninput="showval(this.value)">
+			<p>Value: <span id="val2"></span></p>
 		</div>
-		  <br><input type="submit" value="SUBMIT">
+		  <br><input class="btn btn-primary" type="submit" value="Submit Filters">
 	</div>
 	</form>
 	<br>
@@ -98,6 +126,7 @@
     <!-- Three columns of text below the carousel -->
     <%
     	ArrayList<Product> prods = new ArrayList<Product>();
+    	
     	if(session.getAttribute("products")==null){
     		ProductDBHandler h = new ProductDBHandler();
         	prods = h.getProducts();
@@ -105,10 +134,11 @@
     	}else{
     		prods = (ArrayList)session.getAttribute("products");
     	}
-    	
     	if(session.getAttribute("basket") == null){
     		session.setAttribute("basket", new Basket(prods));
     	}
+    	Basket b = (Basket)session.getAttribute("basket");
+    	prods = AvailableProducts.getAvailableProducts(b, prods);
     	int i = 0;
     	for(Product p: prods){
     %>

@@ -16,14 +16,15 @@ public class TransactionDBHandler {
 	
 	private void InsertFinalTransaction() {
 		try {
-			String sp = "call userTransaction(?,?,?)";
+			String sp = "call userTransaction(?,?,?,?,?)";
 			CallableStatement cs = this.db.getCallableStatement(sp);
 			cs.setString(1, this.t.getUsername());
 			cs.setInt(2, this.t.getTotalCost());
 			cs.registerOutParameter(3, Types.INTEGER);
+			cs.setString(4, this.t.getDeliverySlot());
+			cs.setString(5, this.t.getReturnSlot());
 			this.db.executeCallableStatement(cs);
 			this.fid = cs.getInt(3);
-			System.out.println(this.fid);
 		}catch(Exception e) {
 			System.out.println(e);
 		}
@@ -33,8 +34,8 @@ public class TransactionDBHandler {
 		String sp = "call productTransaction(?,?,?,?)";
 		try {
 			for(ProductTransaction p_t: this.t.getProductTransactions()) {
-				Date lease_start = Date.valueOf("2021-11-03");
-				Date lease_end = Date.valueOf("2021-11-6");
+				Date lease_start = Date.valueOf(this.t.getStartDate());
+				Date lease_end = Date.valueOf(this.t.getEndDate());
 				System.out.println(lease_start);
 				int p_id = p_t.getProductID();
 				CallableStatement cs = this.db.getCallableStatement(sp);
@@ -58,5 +59,9 @@ public class TransactionDBHandler {
 		catch(Exception e) {
 			System.out.println(e);
 		}
+	}
+	
+	public int getfid() {
+		return this.fid;
 	}
 }

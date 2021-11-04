@@ -10,12 +10,16 @@ public class Transactions {
 	private String username, lease_start, lease_end;
 	int total_cost;
 	private ArrayList<ProductTransaction> p_transactions;
-
-	public Transactions(Basket b, String username, String lease_start, String lease_end) {
+	
+	private String deliverySlot, returnSlot;
+	
+	public Transactions(Basket b, String username, String lease_start, String lease_end, String deliverySlot, String returnSlot) {
 		this.t_basket = b;
 		this.lease_end = lease_end;
 		this.lease_start = lease_start;
 		this.username = username;
+		this.deliverySlot = deliverySlot;
+		this.returnSlot = returnSlot;
 		this.p_transactions = new ArrayList<ProductTransaction>();
 		this.createProductTransactions();
 		this.calcTotalCost();
@@ -46,4 +50,18 @@ public class Transactions {
 	public ArrayList<ProductTransaction> getProductTransactions(){
 		return this.p_transactions;
 	}
+	
+	public String getStartDate() {
+		return this.lease_start;
+	}
+	public String getEndDate() {
+		return this.lease_end;
+	}
+	public String getDeliverySlot() {
+		return this.deliverySlot;
+	}
+	public String getReturnSlot() {
+		return this.returnSlot;
+	}
 }	
+

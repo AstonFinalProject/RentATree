@@ -19,7 +19,7 @@ public class DBConnect {
 		conn = null;
 		this.database  = "rentatree";
 		this.username = "root";
-		this.password = "Pa$$word123";
+		this.password = "pass";
 		this.url = "jdbc:mysql://localhost:3306/"+this.database+"?useTimezone=true&serverTimezone=GMT";
 		//System.out.println(this.url);
 		DBConnect.registerOjdbcDriver();
@@ -96,7 +96,6 @@ public class DBConnect {
 			}
 			cs.registerOutParameter(i, Types.INTEGER);
 			cs.executeUpdate();
-			System.out.println(cs);
 			output = cs.getInt(i);
 		}catch(SQLException e) {
 			System.out.println(e);
@@ -160,6 +159,7 @@ public class DBConnect {
 			int i = 1;
 			for(String arg: args) {
 				s.setString(i, arg);
+				i++;
 			}
 			rs = s.executeQuery();
 			return rs;
