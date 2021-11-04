@@ -58,7 +58,7 @@
 	<div align="top">
 	<marquee behavior="alternate" bgcolor="#4BB060" direction="left" height="" loop="7" scrollamount="1" scrolldelay="2" width="100%">
 		<span style="font-size: 20px;color:#FFFFFF">
-			Discount Buy one Get the other half price!</span></marquee>
+			Discount Buy one Get the other half price! Use PromoCode BOGOHP at checkout</span></marquee>
 		</div>
 	</div>
 	<br>	

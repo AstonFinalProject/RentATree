@@ -49,7 +49,8 @@
       <h2>Your RentATree Basket</h2>
       <p class="lead">Please complete the information to make a purchase.</p>
 	  <p class="lead" id= "Discount"><b>Discount: Rent one, Get one half-price!</b></p>
-
+		
+	
 	
 	</div>
 
@@ -60,7 +61,15 @@
           <% 
           	Basket b = (Basket)session.getAttribute("basket"); 
           	String username = (String)session.getAttribute("username");
-	        Transactions t = new Transactions(b,username, "", "", "", "");
+          	Transactions t;
+          	if(request.getParameter("promo")!=null){
+          		t = new Transactions(b,username, (String)session.getAttribute("start"), (String)session.getAttribute("end"), "", "", request.getParameter("promo"));
+          		session.setAttribute("discount", t.getDiscount());
+          	}else{
+          		t = new Transactions(b,username, (String)session.getAttribute("start"), (String)session.getAttribute("end"), "", "", "");
+  
+          	}
+	        
         %>
           <span class="badge bg-primary rounded-pill"><%=b.getBasket().size() %></span>
         </h4>
@@ -82,7 +91,11 @@
               <h6 class="my-0">Discount</h6>
               <small>Rent 1, Get one half price</small>
             </div>
-            <span class="text-success">-£5</span>
+           	<%if(session.getAttribute("discount")!=null) {%>
+            <span class="text-success">-£<%=session.getAttribute("discount")%></span>
+            <%}else{ %>
+            <span class="text-success">-£0%></span>
+            <%} %>
           </li>
 		  <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
@@ -95,12 +108,21 @@
             <span>Total (GBP)</span>
             <strong>£<%=t.getTotalCost()%></strong>
           </li>
+          <li class="list-group-item d-flex justify-content-between">
+          <form action="${pageContext.request.contextPath}/ClearCart" method="post">
+          <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Clear cart</button>
+          </form>
+          </li>
         </ul>
-
+		
        
-        <form class="card p-2" >
+        <form class="card p-2" action = "${pageContext.request.contextPath}/PromoSubmit" method="post">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code">
+          	<% if(session.getAttribute("promo")!=null){%>
+            <input type="text" class="form-control" value="<%=(String)session.getAttribute("promo")%>" placeholder="Promo code" name="promo">
+            <%}else{ %>
+            <input type="text" class="form-control"  placeholder="Promo code" name="promo">
+            <%} %>
             <button type="submit" class="btn btn-secondary">Redeem</button>
           </div>
         </form>

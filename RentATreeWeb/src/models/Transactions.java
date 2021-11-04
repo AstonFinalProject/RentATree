@@ -8,12 +8,12 @@ public class Transactions {
 	
 	private Basket t_basket;
 	private String username, lease_start, lease_end;
-	int total_cost;
+	int total_cost, discount;
 	private ArrayList<ProductTransaction> p_transactions;
 	
 	private String deliverySlot, returnSlot;
 	
-	public Transactions(Basket b, String username, String lease_start, String lease_end, String deliverySlot, String returnSlot) {
+	public Transactions(Basket b, String username, String lease_start, String lease_end, String deliverySlot, String returnSlot, String promoCode) {
 		this.t_basket = b;
 		this.lease_end = lease_end;
 		this.lease_start = lease_start;
@@ -23,6 +23,9 @@ public class Transactions {
 		this.p_transactions = new ArrayList<ProductTransaction>();
 		this.createProductTransactions();
 		this.calcTotalCost();
+		if(promoCode!=null && promoCode.equals("BOGOHP")) {
+			this.checkPromo();
+		}
 		
 	}
 	
@@ -37,6 +40,26 @@ public class Transactions {
 		for(Product p: this.t_basket.getBasket()) {
 			this.total_cost+=p.getPrice();
 		}
+	}
+	
+	private void checkPromo() {
+		if(p_transactions.size()>1) {
+			this.total_cost -= (this.findCheapestTree())/2;
+			this.discount = (this.findCheapestTree())/2;
+		}
+	}
+	
+	private int findCheapestTree() {
+		int min = 10000000;
+		for(Product p: this.t_basket.getBasket()) {
+			if(p.getPrice()<min) {
+				min = p.getPrice();
+			}
+		}
+		if(min==10000000) {
+			return 0;
+		}
+		return min;
 	}
 	
 	public int getTotalCost() {
@@ -62,6 +85,9 @@ public class Transactions {
 	}
 	public String getReturnSlot() {
 		return this.returnSlot;
+	}
+	public int getDiscount() {
+		return this.discount;
 	}
 }	
 

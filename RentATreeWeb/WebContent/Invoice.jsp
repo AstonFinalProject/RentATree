@@ -165,6 +165,13 @@
 
                 <%} %>
             </table>
+            <div class="page-header">
+            	Discount £<%=session.getAttribute("discount") %>
+            </div>
+            <Br>
+            <div class="page-header">
+            	Total Cost £<%=session.getAttribute("totalcost") %>
+            </div>
         </div>
         
       

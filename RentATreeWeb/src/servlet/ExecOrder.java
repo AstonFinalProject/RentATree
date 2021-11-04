@@ -58,7 +58,10 @@ public class ExecOrder extends HttpServlet {
 		}
 		String deliveryslot = request.getParameter("deliveryslot");
 		String returnslot = request.getParameter("returnslot");
-		Transactions t = new Transactions(b, (String)session.getAttribute("username"), start, end, deliveryslot, returnslot);
+		String promo = request.getParameter("promo");
+		session.setAttribute("promo", promo);
+		Transactions t = new Transactions(b, (String)session.getAttribute("username"), start, end, deliveryslot, returnslot, promo);
+		session.setAttribute("discount", t.getDiscount());
 		TransactionDBHandler t_handler = new TransactionDBHandler(t);
 		t_handler.enterTransaction();
 		String houseno = (String)request.getParameter("address");
@@ -73,6 +76,7 @@ public class ExecOrder extends HttpServlet {
 			invoiceBasket.add(p);
 		}
 		session.setAttribute("invoiceBasket", invoiceBasket);
+		session.setAttribute("totalcost", t.getTotalCost());
 		b.clearBasket();
 		response.sendRedirect("Invoice.jsp");
 	}
