@@ -24,7 +24,7 @@
 		<h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 	<div class="form-floating">
 		<input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" required autofocus>
-		<label for="floatingInput" >Email address</label>
+		<label for="floatingInput" >Username</label>
 	</div>
     <br>
 	<div class="form-floating">
@@ -51,12 +51,12 @@
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		Login lObj = new Login(username, password);
-		session.setAttribute("username", username);
 		int output = lObj.loginUser();
 		if(output==2){
 			response.sendRedirect("http://localhost:18080/RentATreeWeb/Admin.jsp");
 		}
 		if(output==1){
+			session.setAttribute("username", username);
 			response.sendRedirect("http://localhost:18080/RentATreeWeb/Shop.jsp");
 		}
 	%>
