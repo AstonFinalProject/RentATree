@@ -17,7 +17,7 @@ public class AdminDBHandler {
 		db.runQuery("CALL incrementMiss "+Username);
 	}
 	
-	public void insertTree(int TreeTypeID, int SupplierID, double Height, int Price) {
+	public void insertTree(int TreeTypeID, int SupplierID, double Height, double Price) {
 		int TreeID = TreeTypeID; // avoids confusion between ProductID and TreeID
 		db.runQuery("CALL insertNewProduct "+TreeID+", "+SupplierID+", "+Height+", "+Price);
 	}
