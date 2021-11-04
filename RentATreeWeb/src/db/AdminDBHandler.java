@@ -38,7 +38,7 @@ public class AdminDBHandler {
 	}
 	
 	public void insertTree(String TreeType, String TreeMaterial, String SupplierName, double Height, double Price) throws SQLException {
-		String sp = "insertTree insertTree (?,?,?,?,?)";
+		String sp = "call insertTree (?,?,?,?,?)";
 		CallableStatement cs = this.db.getCallableStatement(sp);
 		
 		cs.setString(1, TreeType);

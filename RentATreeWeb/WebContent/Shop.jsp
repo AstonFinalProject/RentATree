@@ -152,8 +152,8 @@
         <p>Height: <%=p.getHeight() %></p>
         <p>Material: <%=p.getMaterial() %></p>
         <p>Supplier: <%=p.getSupplierName()%></p>
-        <p>Price: <%=p.getPrice() %>
-        
+        <p>Price: £<%=p.getPrice() %>
+        <p>Description: <%=p.getTreeDescription() %>
         <p><button type="submit" name="add" class="btn btn-secondary" value=<%=p.getID() %>>Add to basket &raquo;</button></p>
       </div><!-- /.col-lg-4 -->
      

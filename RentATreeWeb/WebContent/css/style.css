@@ -10,6 +10,10 @@ body {
   background-color: #f5f5f5;
 }
 
+nav{
+	position: absolute;
+}
+
 .form-signin {
   width: 100%;
   max-width: 330px;

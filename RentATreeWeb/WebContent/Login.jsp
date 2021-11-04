@@ -53,7 +53,7 @@
 		Login lObj = new Login(username, password);
 		int output = lObj.loginUser();
 		if(output==2){
-			response.sendRedirect("http://localhost:18080/RentATreeWeb/Admin.jsp");
+			response.sendRedirect("http://localhost:18080/RentATreeWeb/admin.jsp");
 		}
 		if(output==1){
 			session.setAttribute("username", username);
