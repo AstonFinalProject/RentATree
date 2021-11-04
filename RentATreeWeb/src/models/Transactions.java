@@ -8,10 +8,12 @@ public class Transactions {
 	
 	private Basket t_basket;
 	private String username, lease_start, lease_end;
-	int total_cost, discount;
+	double total_cost, discount;
 	private ArrayList<ProductTransaction> p_transactions;
 	
 	private String deliverySlot, returnSlot;
+	
+	private static double DELIVERY_FEE = 3.99;
 	
 	public Transactions(Basket b, String username, String lease_start, String lease_end, String deliverySlot, String returnSlot, String promoCode) {
 		this.t_basket = b;
@@ -49,7 +51,7 @@ public class Transactions {
 		}
 	}
 	
-	private int findCheapestTree() {
+	private double findCheapestTree() {
 		int min = 10000000;
 		for(Product p: this.t_basket.getBasket()) {
 			if(p.getPrice()<min) {
@@ -62,8 +64,11 @@ public class Transactions {
 		return min;
 	}
 	
-	public int getTotalCost() {
-		return this.total_cost;
+	public double getTotalCost() {
+		System.out.println("Total cost: "+this.total_cost);
+		checkPromo();
+		System.out.println("Discount: "+this.getDiscount());
+		return (this.total_cost + DELIVERY_FEE);
 	}
 	
 	public String getUsername() {
@@ -86,7 +91,7 @@ public class Transactions {
 	public String getReturnSlot() {
 		return this.returnSlot;
 	}
-	public int getDiscount() {
+	public double getDiscount() {
 		return this.discount;
 	}
 }	

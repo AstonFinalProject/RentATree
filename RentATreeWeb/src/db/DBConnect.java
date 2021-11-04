@@ -19,7 +19,7 @@ public class DBConnect {
 		conn = null;
 		this.database  = "rentatree";
 		this.username = "root";
-		this.password = "pass";
+		this.password = "Pa$$word123";
 		this.url = "jdbc:mysql://localhost:3306/"+this.database+"?useTimezone=true&serverTimezone=GMT";
 		//System.out.println(this.url);
 		DBConnect.registerOjdbcDriver();
