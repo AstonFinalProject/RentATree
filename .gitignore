@@ -22,3 +22,4 @@
 hs_err_pid*
 /.metadata/
 RentATreeWeb/.classpath
+RentATreeWeb/src/db/DBConnect.java
