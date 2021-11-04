@@ -152,4 +152,42 @@ public class DBConnect {
 		}
 	}
 	
+	// exec prep statement for all strings 
+	public ResultSet executePreparedStatement(String sql, String[] args) {
+		try {
+			ResultSet rs;
+			PreparedStatement s = this.conn.prepareStatement(sql);
+			int i = 1;
+			for(String arg: args) {
+				s.setString(i, arg);
+			}
+			rs = s.executeQuery();
+			return rs;
+		}catch(SQLException e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public ResultSet executeCallableStatement(CallableStatement cs) {
+		try {
+			ResultSet rs = cs.executeQuery();
+			return rs;
+		}catch(SQLException e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+			
+	public CallableStatement getCallableStatement(String sql) {
+		try {
+			if(this.conn==null) {
+				this.connect();
+			}
+			return this.conn.prepareCall(sql);
+		}catch(SQLException e) {
+			System.out.println(e);
+		}
+		return null;
+	}
 }
