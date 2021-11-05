@@ -83,4 +83,14 @@ public class AdminDBHandler {
 		//db.runQuery("CALL deleteTreeType "+TreeType);
 	}
 	
+	//public void deleteTreeType(String TreeType) throws SQLException {
+		//String sp = "CALL deleteTreeType (?)";
+		//CallableStatement cs = this.db.getCallableStatement(sp);
+		
+		//cs.setString(1, TreeType);
+		//this.db.executeCallableStatement(cs);
+		
+		//db.runQuery("CALL deleteTreeType "+TreeType);
+	//}
+	
 }
