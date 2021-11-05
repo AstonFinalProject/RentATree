@@ -12,11 +12,11 @@ public class AdminDBHandler {
 		db = new DBConnect();
 	}
 	
-	public void incrementHit(String Username) {
-		db.runQuery("CALL incrementHit "+Username);
-	}
+	//public void incrementHit(String Username) {
+		//db.runQuery("CALL incrementHit "+Username);
+	//}
 	
-	public void incrementHit2(String Username) throws SQLException {
+	public void incrementHit(String Username) throws SQLException {
 		String sp = "CALL incrementHit (?)";
 		CallableStatement cs = this.db.getCallableStatement(sp);
 		
@@ -62,7 +62,7 @@ public class AdminDBHandler {
 	}
 	
 	public void insertTreeType(String TreeType, String TreeMaterial, String TreeDescription) throws SQLException {
-		String sp = "insertTree newTreeDescriptionMaster (?,?,?)";
+		String sp = "CALL newTreeDescriptionMaster (?,?,?)";
 		CallableStatement cs = this.db.getCallableStatement(sp);
 		
 		cs.setString(1, TreeType);
@@ -73,11 +73,11 @@ public class AdminDBHandler {
 		//db.runQuery("CALL newTreeDescriptionMaster '"+TreeDescription+"', '"+TreeType+"', '"+TreeMaterial+"', 0");
 	}
 	
-	public void deleteTreeType(String TreeType) throws SQLException {
-		String sp = "insertTree newTreeDescriptionMaster (?,?,?)";
+	public void deleteTreeType(int TreeID) throws SQLException {
+		String sp = "CALL deleteTreeType (?)";
 		CallableStatement cs = this.db.getCallableStatement(sp);
 		
-		cs.setString(1, TreeType);
+		cs.setInt(1, TreeID);
 		this.db.executeCallableStatement(cs);
 		
 		//db.runQuery("CALL deleteTreeType "+TreeType);
